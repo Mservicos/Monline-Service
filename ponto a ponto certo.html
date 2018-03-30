@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<style>
+  #map {
+    height: 0%;
+  }
+  html, body {
+    height: 0%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+    <!-- <script async defer src=" https://maps.googleapis.com/maps/api/js?key=AIzaSyAknIlU-kawWaYFocnJrFdB9LKi1cPMeiA&callback=initMap " -->
+    </script>
+
+<br class="clear" />
+</div>
+</div>
+    <script type="text/javascript"      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAknIlU-kawWaYFocnJrFdB9LKi1cPMeiA&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-15.768466,-47.929459),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
+    <form id="form1" runat="server">
+    <div>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script language="javascript" type="text/javascript">
+    var exibirCaminhos;
+    var servicoDirecao = new google.maps.DirectionsService();
+    function IniciarMapa() {
+        exibirCaminhos = new google.maps.DirectionsRenderer();
+        var latlng = new google.maps.LatLng(-15.682543, -47.978874);
+        var opcoes =
+        {
+            zoom: 8,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var mapa = new google.maps.Map(document.getElementById("mapa"), opcoes);        exibirCaminhos.setMap(mapa);        exibirCaminhos.setPanel(document.getElementById('direcaopainel'));
+        var controle = document.getElementById('controle');
+        controle.style.display = 'block';    }
+
+    function calcularRota() {
+        var start = document.getElementById('valorinicio').value;
+        var end = document.getElementById('valorfinal').value;
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };        servicoDirecao.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                exibirCaminhos.setDirections(response);
+            }
+        });
+    }
+    function Button1_onclick() {
+        calcularRota();
+    }
+    window.onload = IniciarMapa;
+    </script>
+    <table id="controle"/>
+    <tr>
+    <td>
+    <table>
+    <tr>
+    <td>De:</td>
+    <td>
+        <input id="valorinicio" type="text" style="width: 305px" /></td>
+    </tr>
+    <tr>
+    <td>Para:</td>
+    <td><input id="valorfinal" type="text" style="width: 301px" /></td>
+    </tr>
+    <tr>
+    <td align ="right">
+        <input id="Button1" type="button" value="Obter Caminho" onclick="return Button1_onclick()" /></td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    <tr>DQogICAgPHRkIHZhbGlnbiA9InRvcCI+DQogICAgPGRpdiBpZCA9ImRpcmVjYW9wYWluZWwiICBzdHlsZT0iaGVpZ2h0OiAzOTBweDtvdmVyZmxvdzogYXV0byIgPjwvZGl2Pg0KICAgIDwvdGQ+DQogICAgPHRkIHZhbGlnbiA9InRvcCI+DQogICAgPGRpdiBpZCA9Im1hcGEiIHN0eWxlPSJoZWlnaHQ6IDM5MHB4OyB3aWR0aDogNDg5cHgiPg0KDQoNCjxoZWFkPg0KPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPg0KZnVuY3Rpb24gaWQoIGVsICl7DQogICAgICAgIHJldHVybiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCggZWwgKTsNCn0NCmZ1bmN0aW9uIGdldE1vbmV5KCBlbCApew0KICAgICAgICB2YXIgbW9uZXkgPSBpZCggZWwgKS52YWx1ZS5yZXBsYWNlKCAnLCcsICcuJyApOw0KICAgICAgICByZXR1cm4gcGFyc2VGbG9hdCggbW9uZXkgKSoxMDsNCn0NCmZ1bmN0aW9uIHNvbWEoKQ0Kew0KICAgICAgICB2YXIgdG90YWwgPSBnZXRNb25leSgnY2FtcG8xJykqZ2V0TW9uZXkoJ2NhbXBvMicpK2dldE1vbmV5KCdjYW1wbzMnKTsNCiAgICAgICAgaWQoJ2NhbXBvNCcpLnZhbHVlID0gJ1IkICcrdG90YWwvMTAwOw0KDQo8L3RleHRhcmVhPg0KPC9mb3JtPg0KPC9mb250PiANCgkJPC90ZXh0YXJlYT4NCiAgICAgICAgICA8L2Zvcm0+DQoNCgkJDQoJPGRpdj4NCgk8c3BhbiAnanN0Y2FjaGU9IjI0IiAvPiArIDxpbnB1dCBuYW1lPWNhbXBvMiBpZD1hZHAtc3VtbWFyeSB2YWx1ZT0iIiAvPg0KCTxici8+DQoJDQoJPHNwYW4ganN0Y2FjaGU9IjI3IiBzdHlsZT0iZGlzcGxheTpub25lIj48L3NwYW4+PC9kaXY+DQogICAgPGRpdiBpZCA9ImRpcmVjYW9wYWluZWwiICBzdHlsZT0iaGVpZ2h0OiAzOTBweDtvdmVyZmxvdzogYXV0byIgPjwvZGl2Pg0KICAgIA0KCTxpbnB1dCBnb29nbGUubWFwcy5ldmVudC5hZGRMaXN0ZW5lcihtYXJrZXJQb250byksICdjbGljaycgLz4gDQoJPGlucHV0IG5hbWU9ImNhbXBvMiIgaWQ9ImFkcC1zdW1tYXJ5IiB2YWx1ZT0iIiANCgkJPGlucHV0IG5hbWU9ImNhbXBvMiIgaWQ9InZhbGluZyIgdmFsdWU9IiI8Lz4NCgkJPGlucHV0IHNwYW49IGpzdGNhY2hlPSIyNCI+PC9zcGFuPiA8YnI+DQoJCQkJPGlucHV0IG5hbWU9J2NhbXBvMicgaWQ9JzI0JyB2YWx1ZT0iIiAvPiA8c3BhbiBqc3RjYWNoZT0iMjQiPjwvc3Bhbj4NCgkJPGlucHV0IG5hbWU9J2NhbXBvMicgaWQ9J2FkcC1zdW1tYXJ5JyB2YWx1ZT0iIiAnc3BhbiBqc3RjYWNoZT0yNCcgPiA8L3NwYW4+DQogICAgPGgyPiA8L2gyPg0KICAgICAgICAgICAgICAgIDxpbnB1dCBuYW1lPSJjYW1wbzIiIGlkPSJ2YWxpbmciIHZhbHVlPSIiIDxicj4gLz4NCjx0YWJsZSB3aWR0aD0iMTgwIiBjZWxsc3BhY2luZz0iMSIgY2VsbHBhZGRpbmc9IjMiIGJvcmRlcj0iMCIgYmdjb2xvcj0iIzE2NTQ4MCI+IA0KPHRyPiANCiAgIDx0ZCBiZ2NvbG9yPSIjNUZBNkQ3Ij4gDQo8Zm9udCBzaXplPTIgZmFjZT0idmVyZGFuYSwgYXJpYWwsIGhlbHZldGljYSI+IA0KPGI+UVVJTMOUTS4gVE9UQUwgREEgUk9UQTwvYj4gDQo8L2ZvbnQ+IA0KICAgPC90ZD4gDQo8L3RyPiANCjx0cj4gDQogICAgDQo8L3RyPiANCjwvdGFibGU+IA0KDQo8L3NjcmlwdD4NCjwvaGVhZD4NCjxib2R5Pg0KDQo8L3RleHRhcmVhPg0KPC9mb3JtPg0KPC9zY3JpcHQ+DQo8L2hlYWQ+DQo8Ym9keT4NCjxmb3JtIG5hbWU9ImZvcm0xIg0KPCd0ZXh0IG5hbWU9bXl0ZXh0YXJlYSBjb2xzPTMwMDAgcm93cz0xIGRpc2FibGVkPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA0KPC90ZXh0YXJlYT4NCjwvZm9ybT4NCjwvc2NyaXB0Pg0KPC9oZWFkPg0KPGJvZHk+DQogICAgICAgIDxmb3JtIGFjdGlvbj0iIiBtZXRob2Q9IiI+DQogICAgICAgICAgICAgICAgPGlucHV0IG5hbWUgZGlzYWJsZWQ9ImNhbXBvMyIgaWQ9ImNhbXBvMyIgdmFsdWU9IjEyIiAvPjxiciAvPg0KPHRhYmxlIHdpZHRoPSIxODAiIGNlbGxzcGFjaW5nPSIxIiBjZWxscGFkZGluZz0iMyIgYm9yZGVyPSIwIiBiZ2NvbG9yPSIjMTY1NDgwIj4gDQo8dHI+IA0KICAgPHRkIGJnY29sb3I9IiM1RkE2RDciPiANCjxmb250IHNpemU9MiBmYWNlPSJ2ZXJkYW5hLCBhcmlhbCwgaGVsdmV0aWNhIj4gDQo8Yj5UQVhBIERFIFNFUlZJw4dPIFIkMSwyMDwvYj4gDQo8L2ZvbnQ+IA0KICAgPC90ZD4gDQo8L3RyPiANCjx0cj4gDQogICAgDQo8L3RyPiANCjwvdGFibGU+IA0KDQo8L3NjcmlwdD4NCjwvaGVhZD4NCjxib2R5Pg0KDQo8L3RleHRhcmVhPg0KPC9mb3JtPg0KICAgICAgICA8Zm9ybSBhY3Rpb249IiIgbWV0aG9kPSIiPg0KICAgICAgICAgICAgICAgIDxpbnB1dCBuYW1lPSJjYW1wbzQiIHJlYWRvbmx5PSJyZWFkb25seSIgaWQ9ImNhbXBvNCIgLz48YnIgLz4NCiAgICAgICAgICAgICAgICA8aW5wdXQgdHlwZT0iYnV0dG9uIiBvbmNsaWNrPSJzb21hKCkiIHZhbHVlPSJWQUxPUiBUT1RBTCBEQSBWSUFHRU0iIC8+DQogICAgICAgIDwvZm9ybT4NCjwvYm9keT4NCjwvaHRtbD4NCg0KDQoNCg0KDQp9DQoNCjwvZGl2Pg0KICAgIDwvdGQ+DQogICAgPC90cj4NCiAgICA8L3RhYmxlPg0KICAgIDwvZGl2Pg0KICAgIDwvZm9ybT4NCjwvYm9keT4NCjwvaHRtbD4NCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg==
+	
+	
+	
+	
+
+<!DOCTYPE html>
+
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head><title>
+	Calcular distancia entre cidades (mapas e rotas)
+</title><link rel="stylesheet" type="text/css" href="https://cbsa.com.br/style/compact.css?cache=11" />
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="https://code.jquery.com/jquery-1.8.1.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19585705-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'https://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    <script type="text/javascript">
+        function CalculaDistancia() {
+            $('#litResultado').html('Aguarde...');
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+              {
+                  //Origem
+                  origins: [$("#txtOrigem").val()],
+                  //Destino
+                  destinations: [$("#txtDestino").val()],
+                  //Modo (DRIVING | WALKING | BICYCLING)
+                  travelMode: google.maps.TravelMode.DRIVING,
+                  //Sistema de medida (METRIC | IMPERIAL)
+                  unitSystem: google.maps.UnitSystem.METRIC
+              }, callback);
+        }
+        function callback(response, status) {
+            if (status != google.maps.DistanceMatrixStatus.OK)
+                $('#litResultado').html(status);
+            else {
+                $('#litResultado').html("<strong>Origem</strong>: " + response.originAddresses +
+                    "<br /><strong>Destino:</strong> " + response.destinationAddresses +
+                    "<br /><strong>Distância</strong>: " + response.rows[0].elements[0].distance.text +
+                    " <br /><strong>Duração</strong>: " + response.rows[0].elements[0].duration.text
+                    );
+                //Atualizar o mapa
+				//https://maps.google.com/maps?saddr=porto+alegre&amp;daddr=S&atilde;o paulo&amp;output=embed
+                $("#map").attr("src", "https://maps.google.com/maps?saddr=" + response.originAddresses + "&daddr=" + response.destinationAddresses + "&output=embed");
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+        <div class="holder" style="color:#666">
+            <div>
+                <a href="/" target="_blank">
+                    <img alt="Codebreak" src="https://cbsa.com.br/images/codebreak.png?c=1"></a>
+
+                <h1>Calcular distancia entre cidades (mapas e rotas)</h1>
+
+            </div>
+            <div>
+                <p>
+                    Utilize os campos abaixo para calcular a distância entre dois endereços.<br />
+                    É possível calcular a distância entre bairros e ruas, bem como calcular distância entre cidades.
+                <br />
+                    Ou seja, é possível calcular distância entre dois pontos, basta digitar no primeiro campo o endereço de origem e no segundo o endereço de destino.<br />
+                    Além de exibir a distância entre endereços, é exibido o mapa de como chegar. Mas se quiser calcular rotas completas, você pode acessar clicando <a href="https://cbsa.com.br/post/tracar-rotas-com-google-directions-api.aspx"  target="_blank">aqui</a>.
+
+                </p>
+            </div>
+            <div style="margin-bottom:30px;">
+                <div style="width: 22%; float:left">
+                    <strong>Distância entre cidades: </strong>
+                    <br />
+                    End. origem: <i style="color:#000">Porto Alegre - RS</i><br />
+                    End. destino: <i style="color:#000">São Paulo - SP</i><br />
+                </div>
+                <div style="width: 29%; float:left">
+                    <strong>Distância entre Bairros:</strong><br />
+                    End. origem: <i style="color:#000">Cidade baixa, Porto Alegre - RS</i><br />
+                    End. destino: <i style="color:#000">Partenon, Porto Alegre - RS</i><br />
+                </div>
+                <div style="width: 39%; float:left">
+                    <strong>Distância entre Ruas:</strong><br />
+                    End. origem: <i style="color:#000">Av Loureiro da Silva - Cidade Baixa, Porto Alegre - RS</i><br />
+                    End. destino: <i style="color:#000">Av Avenida Ipiranga - Partenon, Porto Alegre - RS</i><br />
+                </div>
+                <div class="clear"></div>
+            </div>
+
+
+            <div style="width: 680px; float: left">
+                <table width="448" height="58" cellspacing="0" cellpadding="0" border="0" class="contact fleft" style="margin: 0 0 10px">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="txtOrigem"><strong>Endere&ccedil;o de origem</strong></label>
+                                <input type="text" id="txtOrigem" class="field" style="width: 400px" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="txtDestino"><strong>Endere&ccedil;o de destino</strong></label>
+                                <input type="text" style="width: 400px" class="field" id="txtDestino" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="width: 100px; float: left; padding: 50px 20px 20px">
+                    <input type="button" value="Calcular dist&acirc;ncia" onclick="CalculaDistancia()" class="btnNew" />
+                </div>
+                <div class="clear"><span id="litResultado">&nbsp;</span></div>
+
+            </div>
+
+            <div style="width: 300px; float: left">
+                <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-0140279007301335";
+    /* 300x250 final conteúdo */
+    google_ad_slot = "6354934884";
+    google_ad_width = 300;
+    google_ad_height = 250;
+    //-->
+                </script>
+                <script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            </div>
+            <div style="padding: 10px 0 0; clear: both">
+                <iframe width="980" scrolling="no" height="500" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=são paulo&daddr=rio de janeiro&output=embed"></iframe>
+            </div>
+            <div style="width: 300px; clear: both">
+                <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-0140279007301335";
+    /* 728x90 */
+    google_ad_slot = "6584132583";
+    google_ad_width = 728;
+    google_ad_height = 90;
+    //-->
+                </script>
+                <script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            </div>
+        </div>
+		
+</body>
+</html>
