@@ -1,0 +1,348 @@
+-- phpMyAdmin SQL Dump
+-- version 4.3.8
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Tempo de geração: 03/05/2017 às 20:36
+-- Versão do servidor: 5.5.51-38.2
+-- Versão do PHP: 5.4.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Banco de dados: `agenciad_pedidos`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `arroz`
+--
+
+CREATE TABLE IF NOT EXISTS `arroz` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `arroz`
+--
+
+INSERT INTO `arroz` (`id`, `tipo`) VALUES
+(1, 'Perdedor'),
+(3, 'SerÃ¡'),
+(5, 'TESTE ARROZ');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `carne`
+--
+
+CREATE TABLE IF NOT EXISTS `carne` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `carne`
+--
+
+INSERT INTO `carne` (`id`, `tipo`) VALUES
+(5, 'Bife de Frango Grelhado');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `feijao`
+--
+
+CREATE TABLE IF NOT EXISTS `feijao` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(100) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `feijao`
+--
+
+INSERT INTO `feijao` (`id`, `tipo`) VALUES
+(1, 'FeijÃ£o Carioquinhaaaa'),
+(4, 'Feijoada');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `fruta`
+--
+
+CREATE TABLE IF NOT EXISTS `fruta` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `fruta`
+--
+
+INSERT INTO `fruta` (`id`, `tipo`) VALUES
+(1, 'MaÃ§Ã£'),
+(3, 'Banana');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `guarnicao`
+--
+
+CREATE TABLE IF NOT EXISTS `guarnicao` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `guarnicao`
+--
+
+INSERT INTO `guarnicao` (`id`, `tipo`) VALUES
+(2, 'Mandioca Fritaa');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `marmitex`
+--
+
+CREATE TABLE IF NOT EXISTS `marmitex` (
+  `id` int(11) NOT NULL,
+  `tamanho` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `valor` float NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `marmitex`
+--
+
+INSERT INTO `marmitex` (`id`, `tamanho`, `valor`) VALUES
+(9, 'Pequena', 10.5),
+(8, 'Mini', 8),
+(10, 'Grande', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `numeroped`
+--
+
+CREATE TABLE IF NOT EXISTS `numeroped` (
+  `id` int(11) NOT NULL,
+  `pedidon` int(8) unsigned zerofill DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `numeroped`
+--
+
+INSERT INTO `numeroped` (`id`, `pedidon`) VALUES
+(1, 00000021);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pedidos`
+--
+
+CREATE TABLE IF NOT EXISTS `pedidos` (
+  `id` int(11) NOT NULL,
+  `numerop` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `cliente` varchar(200) COLLATE latin1_general_ci NOT NULL,
+  `telefone` varchar(200) COLLATE latin1_general_ci NOT NULL,
+  `endereco` varchar(300) COLLATE latin1_general_ci NOT NULL,
+  `arroz` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `feijao` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `carne` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `guarnicao1` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `garnicao2` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `salada1` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `salada2` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `fruta` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `tmarmitex` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `preco` float NOT NULL,
+  `carne-extra` float NOT NULL,
+  `observacao` varchar(500) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `numerop`, `cliente`, `telefone`, `endereco`, `arroz`, `feijao`, `carne`, `guarnicao1`, `garnicao2`, `salada1`, `salada2`, `fruta`, `tmarmitex`, `preco`, `carne-extra`, `observacao`) VALUES
+(3, '0002136', 'Fulano de Tal', '23333333', 'Rua das cabritas; 3265', 'Branco', 'Preto', 'Bife de Boi', 'Mandioca', 'Pure', 'Alface', 'Tomate', 'Banana', 'Grande', 22, 15, 'Nada a declarar cambada');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `salada`
+--
+
+CREATE TABLE IF NOT EXISTS `salada` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `salada`
+--
+
+INSERT INTO `salada` (`id`, `tipo`) VALUES
+(1, 'Alfacee'),
+(2, 'Tomate');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `codigo` int(11) NOT NULL,
+  `usuario` varchar(30) COLLATE latin1_general_ci NOT NULL,
+  `email` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `senha` varchar(30) COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Fazendo dump de dados para tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`codigo`, `usuario`, `email`, `senha`) VALUES
+(1, 'admin', 'admin@admin.com.br', 'admin');
+
+--
+-- Índices de tabelas apagadas
+--
+
+--
+-- Índices de tabela `arroz`
+--
+ALTER TABLE `arroz`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `carne`
+--
+ALTER TABLE `carne`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `feijao`
+--
+ALTER TABLE `feijao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `fruta`
+--
+ALTER TABLE `fruta`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `guarnicao`
+--
+ALTER TABLE `guarnicao`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `marmitex`
+--
+ALTER TABLE `marmitex`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `numeroped`
+--
+ALTER TABLE `numeroped`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `salada`
+--
+ALTER TABLE `salada`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`codigo`);
+
+--
+-- AUTO_INCREMENT de tabelas apagadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `arroz`
+--
+ALTER TABLE `arroz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de tabela `carne`
+--
+ALTER TABLE `carne`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de tabela `feijao`
+--
+ALTER TABLE `feijao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de tabela `fruta`
+--
+ALTER TABLE `fruta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de tabela `guarnicao`
+--
+ALTER TABLE `guarnicao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de tabela `marmitex`
+--
+ALTER TABLE `marmitex`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de tabela `numeroped`
+--
+ALTER TABLE `numeroped`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de tabela `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de tabela `salada`
+--
+ALTER TABLE `salada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
